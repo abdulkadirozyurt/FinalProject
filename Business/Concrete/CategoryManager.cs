@@ -23,7 +23,7 @@ namespace Business.Concrete
 
 
 
-        // constructor injection ile bağımlılık yapıyoruz.
+        // constructor injection.
 
 
         public CategoryManager(ICategoryDal categoryDal)
