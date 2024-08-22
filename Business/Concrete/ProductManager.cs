@@ -33,13 +33,6 @@ namespace Business.Concrete
 
 
             return _productDal.GetAll();
-
-
-
-            
-
-
-
         }
 
         public List<ProductDetailDto> GetProductDetails()

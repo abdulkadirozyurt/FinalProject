@@ -11,8 +11,6 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //ProductTest();
-
-
             //CategoryTest();
 
 
@@ -22,31 +20,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine(product.ProductName + "/" + product.CategoryName);
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
-
-
-
 
         private static void CategoryTest()
         {

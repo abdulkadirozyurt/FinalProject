@@ -12,8 +12,8 @@ namespace Core.DataAccess.EntityFramework
 
     // entity framework kullanarak bir repository base'i oluştur.
     public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>          // bir tablo ver bir de context tipi ver, ben ona göre çalışacağım demek.
-    where TEntity : class, IEntity, new()                           // generic constraint: sınırlamalarımızı koyduk.
-    where TContext : DbContext, new()                               // bize sadece NorthwindContext gibi şeyler kullanma izni verecek.
+    where TEntity : class, IEntity, new()                                                        // generic constraint: sınırlamalarımızı koyduk.
+    where TContext : DbContext, new()                                                            // bize sadece NorthwindContext gibi şeyler kullanma izni verecek.
 
     {
         // bir tabloyu ilgilendiren tüm operasyonları tekrar tekrar yazmamak için burayı kullanacağız. bir kere yazarız, her yerde kullanırız.
