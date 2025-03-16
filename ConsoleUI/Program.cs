@@ -13,7 +13,6 @@ namespace ConsoleUI
             //ProductTest();
             //CategoryTest();
 
-
             ProductManager productManager = new ProductManager(new EfProductDal());
 
             foreach (var product in productManager.GetProductDetails())

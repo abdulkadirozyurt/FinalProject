@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
 
             // connection string
 
-            optionsBuilder.UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database=Northwind; Trusted_Connection = true");
+            optionsBuilder.UseSqlServer(@"Server = abdulkadirf17; Database=Northwind; Trusted_Connection = true");
 
 
         }

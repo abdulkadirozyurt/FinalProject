@@ -14,9 +14,7 @@ namespace DataAccess.Abstract
 
         // interface metotları default olarak public'tir
        
-        List<ProductDetailDto> GetProductDetails(); // ürünün detaylarını getir
-
-        
+        List<ProductDetailDto> GetProductDetails(); // ürünün detaylarını getir       
 
 
     }

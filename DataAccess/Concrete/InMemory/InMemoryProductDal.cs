@@ -34,12 +34,14 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Product product)
         {
-
+            // _products.Remove(product);  
+            // bu şekilde yapamayız. çünkü referans tipi ile çalışıyoruz. yani referans numarası ile çalışıyoruz.
+            // product'ın referans numarası ile listedeki referans numarası aynı değil. bu yüzden silinmez.
+            // bu yüzden silme işlemi yaparken, silinecek olan ürünü bulmamız gerekiyor.
 
 
             //  tek tek dolaşır.  her p için p'nin productId'si benim gönderdiğim produrct'ın ProductId'sine eşit mi git bak demek.
             Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
-
 
             _products.Remove(productToDelete);
         }
