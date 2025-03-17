@@ -23,8 +23,6 @@ namespace DataAccess.Concrete.EntityFramework
             // connection string
 
             optionsBuilder.UseSqlServer(@"Server = abdulkadirf17; Database=Northwind; Trusted_Connection = true");
-
-
         }
             //      classım  | tablo karşılığı
         public DbSet<Product> Products { get; set; }      // benim hangi nesnem, veritabanında hangi tabloya karşılık gelecek, onu bildirdiğimiz kısım.

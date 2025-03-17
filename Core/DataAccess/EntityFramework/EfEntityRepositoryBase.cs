@@ -21,25 +21,23 @@ namespace Core.DataAccess.EntityFramework
 
         public void Add(TEntity entity)
         {
-            using (TContext context = new TContext())       // using bloğu içine yazılan nesneler using bitince anında bellekten silinir.
-            {   
-                                                            // northwind bellekten işi bitince silinecek. bu hareketi yapınca daha performanslı. Direk metot içinde de newleyebilirdik ama böyle daha iyi.
-
-                     // referansı yakalama kısmı
-                var addedEntity = context.Entry(entity);    // git veri kaynağından, benim gönderdiğim product'a bir tane nesneyi eşleştir. (Şu an yeni ekliyoruz.)
-                addedEntity.State = EntityState.Added;
-                context.SaveChanges();
-
-
-                /*
-                sırasıyla 1-2-3 satırlar
+            // IDisposable pattern implementation of c#
+            // using bloğu içine yazılan nesneler using bitince anında bellekten silinir.
+            // context nesnesi biraz pahalıdır. bu yüzden using kullanırız.
+            // northwind bellekten işi bitince silinecek. bu hareketi yapınca daha performanslı.
+            // Direk metot içinde de newleyebilirdik ama böyle daha iyi.
+            using (TContext context = new TContext())       
+            {
+                // first, get the reference of the entity
+                // normally, Entry(): It means that map an object with the Product I sent.
+                // But we are adding a new product now.
+                var addedEntity = context.Entry(entity);
                 
-                1- referansı yakala
-                2- o aslında eklenecek bir nesne
-                3- ve şimdi ekle
+                // Notify the adding operation
+                addedEntity.State = EntityState.Added;
 
-                anlamlarına gelir.
-                */
+                // perform operations
+                context.SaveChanges();               
             }
         }
 
@@ -47,15 +45,10 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
-
-
-
             }
-
         }
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
@@ -71,9 +64,7 @@ namespace Core.DataAccess.EntityFramework
             using (TContext context = new TContext())
             {
                 // eğer filtre vermediyse ilgili tablodaki tüm veriyi getir, filtre vermişse uygula ve ona göre datayı listele
-
-                // veritabanındaki products tablosuna yerleş, onu listeye çevir ve bana döndür
-
+                // set<>() -> veritabanındaki ilgili tabloya yerleş, onu listeye çevir ve bana döndür
 
                 return filter == null
                     ? context.Set<TEntity>().ToList()
@@ -81,8 +72,6 @@ namespace Core.DataAccess.EntityFramework
                 // lambda gibi
             }
         }
-
-
 
         public List<TEntity> GetAllByCategory(int categoryId)
         {
