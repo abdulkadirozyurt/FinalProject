@@ -11,29 +11,14 @@ namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        // bağımlılığı minimize ediyoruz.
-
-
         ICategoryDal _categoryDal;
-
-
-
-        // constructor injection.
-
 
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
-
-        // Bu şu demek, ben CategoryManager olarak veri erişim katmanına bağımlıyım ama biraz zayıf bağımlılığım var, çünkü ben interface (yani referans) üzerinde bağımlıyım o yüzden sen DataAccess katmanında kurallara uymak şsrtıyla istediğini yapabilirsin.
-
-
         public List<Category> GetAll()
         {
-            // iş kodları
-
-
             return _categoryDal.GetAll();
         }
 

@@ -10,11 +10,8 @@ using System.Threading.Tasks;
 namespace DataAccess.Abstract
 {
     public interface IProductDal : IEntityRepository<Product>
-    {
-
-        // interface metotları default olarak public'tir
-       
-        List<ProductDetailDto> GetProductDetails(); // ürünün detaylarını getir       
+    {      
+        List<ProductDetailDto> GetProductDetails(); 
 
 
     }

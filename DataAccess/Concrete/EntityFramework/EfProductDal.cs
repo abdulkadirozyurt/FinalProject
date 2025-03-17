@@ -18,10 +18,10 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (NortwindContext context = new NortwindContext())
             {
-                var result = from p in context.Products                 // ürünlerle kategorileri join et (birleştir) demek
+                var result = from p in context.Products                     // ürünlerle kategorileri join et (birleştir) demek
                              join c in context.Categories
-                             on p.CategoryId equals c.CategoryId      // neye göre  ==>  kategori id sine göre
-                             select new ProductDetailDto             // hangi kolonları istiyorsun?
+                             on p.CategoryId equals c.CategoryId            // neye göre  ==>  kategori id sine göre
+                             select new ProductDetailDto                    // hangi kolonları istiyorsun?
                              {
 
                                  ProductId = p.ProductId,

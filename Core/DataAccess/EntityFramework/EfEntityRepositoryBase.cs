@@ -8,17 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.DataAccess.EntityFramework
-{
-
-    // entity framework kullanarak bir repository base'i oluştur.
-    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>          // bir tablo ver bir de context tipi ver, ben ona göre çalışacağım demek.
-    where TEntity : class, IEntity, new()                                                        // generic constraint: sınırlamalarımızı koyduk.
-    where TContext : DbContext, new()                                                            // bize sadece NorthwindContext gibi şeyler kullanma izni verecek.
-
+{   
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+    where TEntity : class, IEntity, new()
+    where TContext : DbContext, new()
     {
-        // bir tabloyu ilgilendiren tüm operasyonları tekrar tekrar yazmamak için burayı kullanacağız. bir kere yazarız, her yerde kullanırız.
-
-
         public void Add(TEntity entity)
         {
             // IDisposable pattern implementation of c#
@@ -26,18 +20,18 @@ namespace Core.DataAccess.EntityFramework
             // context nesnesi biraz pahalıdır. bu yüzden using kullanırız.
             // northwind bellekten işi bitince silinecek. bu hareketi yapınca daha performanslı.
             // Direk metot içinde de newleyebilirdik ama böyle daha iyi.
-            using (TContext context = new TContext())       
+            using (TContext context = new TContext())
             {
                 // first, get the reference of the entity
-                // normally, Entry(): It means that map an object with the Product I sent.
+                // normally, Entry(): It means that map an object with the Product we sent.
                 // But we are adding a new product now.
                 var addedEntity = context.Entry(entity);
-                
+
                 // Notify the adding operation
                 addedEntity.State = EntityState.Added;
 
                 // perform operations
-                context.SaveChanges();               
+                context.SaveChanges();
             }
         }
 
