@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    // birden fazla tablonun join'i olabilir. tek başına bir tablo değil
-
+    // Dto can be used for multiple tables. It is not a single table.
     public class ProductDetailDto : IDto
     {
         public int ProductId { get; set; }

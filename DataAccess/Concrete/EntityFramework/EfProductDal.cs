@@ -23,15 +23,12 @@ namespace DataAccess.Concrete.EntityFramework
                              on p.CategoryId equals c.CategoryId            // neye göre  ==>  kategori id sine göre
                              select new ProductDetailDto                    // hangi kolonları istiyorsun?
                              {
-
                                  ProductId = p.ProductId,
                                  ProductName = p.ProductName,
                                  CategoryName = c.CategoryName,
                                  UnitsInStock = p.UnitsInStock
-
                              };
-                return result.ToList();  // IQueryable türünde bir döngü olduğu için ToList() kullanırız
-            
+                return result.ToList();  // IQueryable türünde bir döngü olduğu için ToList() kullanırız            
             }
         }
     }
