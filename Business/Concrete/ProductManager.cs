@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
@@ -25,14 +26,14 @@ namespace Business.Concrete
         public IResult Add(Product product)
         {
             if (product.ProductName.Length < 2)
-                return new ErrorResult("Product name must be at least 2 characters long");
+                return new ErrorResult(Messages.ProductNameInvalid);
 
             _productDal.Add(product);
 
-            return new SuccessResult("Product added successfully");
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
             return _productDal.GetAll();
         }
