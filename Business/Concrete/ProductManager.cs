@@ -34,22 +34,26 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            return new DataResult( _productDal.GetAll());
+            var products = _productDal.GetAll();
+            return new DataResult<List<Product>>(true, products);
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
-            return _productDal.GetAll(p => p.CategoryId == id);
+            var products = _productDal.GetAll(p => p.CategoryId == id);
+            return new DataResult<List<Product>>(true, products);
         }
 
         public IDataResult<List<Product>> GetAllByUnitPrice(decimal min, decimal max)
         {
-            return _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+            var products = _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+            return new DataResult<List<Product>>(true, products);
         }
 
         public IDataResult<Product> GetById(int id)
         {
-            return _productDal.Get(p => p.ProductId == id);
+            var product = _productDal.Get(p => p.ProductId == id);
+            return new DataResult<Product>(true, product);
         }
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
