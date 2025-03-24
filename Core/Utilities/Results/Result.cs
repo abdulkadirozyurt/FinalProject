@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,6 @@ namespace Core.Utilities.Results
         {
             Message = message;
         }
-
         public bool Success { get; }
         public string Message { get; }
     }

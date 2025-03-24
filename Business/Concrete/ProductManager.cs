@@ -35,13 +35,13 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour == 22)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
 
             var products = _productDal.GetAll();
-            return new SuccessDataResult<List<Product>>( products);
+            return new SuccessDataResult<List<Product>>(products);
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
@@ -53,7 +53,7 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAllByUnitPrice(decimal min, decimal max)
         {
             var products = _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
-            return new SuccessDataResult<List<Product>>( products);
+            return new SuccessDataResult<List<Product>>(products);
         }
 
         public IDataResult<Product> GetById(int id)

@@ -31,7 +31,8 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers();            
+                
 
             // create a reference for me
             // AddSingleton: It creates a single instance of the object in whole memory and reuses it.
@@ -40,10 +41,6 @@ namespace WebAPI
             // if we use a cart state in a e-commerce platform, in a manager class, it causes mix each other cart information
             services.AddSingleton<IProductService, ProductManager>();
             services.AddSingleton<IProductDal,EfProductDal>();
-
-        
-
-
 
             services.AddSwaggerGen(options =>
             {
@@ -75,3 +72,12 @@ namespace WebAPI
         }
     }
 }
+
+
+// AOP: Aspect Oriented Programming
+
+// It is a programming paradigm that aims to increase modularity
+// by allowing the separation of cross-cutting concerns (security, exception handling, logging etc.)
+// from the main business logic.
+
+// 
