@@ -39,8 +39,10 @@ namespace WebAPI
             // whether there are a million requests or a single request, it will always use the same object.
             // but we use singleton when we don't have data in it.
             // if we use a cart state in a e-commerce platform, in a manager class, it causes mix each other cart information
-            services.AddSingleton<IProductService, ProductManager>();
-            services.AddSingleton<IProductDal,EfProductDal>();
+            //services.AddSingleton<IProductService, ProductManager>();
+            //services.AddSingleton<IProductDal,EfProductDal>();
+
+
 
             services.AddSwaggerGen(options =>
             {
